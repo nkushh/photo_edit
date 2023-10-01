@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+*.jpg
+*.xlsx
+venv_invites
+*.jpg
+*.png
+*.ttf
+.python-version
+PyWhatKit_DB.txt
