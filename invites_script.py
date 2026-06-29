@@ -5,30 +5,32 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-class WeddingInvites:
+class InvitesScript:
     def __init__(self):
         self.file_extensions = ('.jpg', '.png', '.jpeg')
         self.invite_card = input("Enter card image filename: ")
 
-        # Open the card to read dimensions
+        # Open the card to get the dimensions of the card
         self.card_img = Image.open(self.invite_card)
         self.img_height = self.card_img.height
         self.img_width = self.card_img.width
         print(f"The height of the selected image is {self.img_height}")
-        # Y-coordinate for the text baseline
-        self.text_position_y = int(input("Enter vertical position (Y-coordinate) for text: "))
+        
+        # Enter the Y-coordinate for the text baseline
+        self.text_position_y = int(input("Enter vertical position (Y-coordinate) for text (px): "))
 
-        # Text color
+        # Enter the text color
         self.text_color = input("Enter hex color for text (e.g. #000000): ").strip()
 
-        # Load Excel guest list
+        # Load Excel guest list complete with teh extension
         self.invitees = input("Enter invitees list filename: ")
         self.invite_list = openpyxl.load_workbook(self.invitees)
         
-        # X where dotted line starts
-        self.area_start_x = int(input("Enter text area start position (X-coordinate): "))
-        # Width of text area
-        self.area_width = int(input("Enter Text area width: "))                
+        # Enter the X-cordinates of where guest's name line starts
+        self.area_start_x = int(input("Enter text area start position (X-coordinate) (px): "))
+        
+        # Enter the Width of the text area
+        self.area_width = int(input("Enter Text area width (px): "))                
 
     def sendwhatsapp_msg(self, msg, phone_no, image_name):
         message_sent = pywhatkit.sendwhats_image(phone_no, image_name, msg, 1, True)
@@ -81,5 +83,5 @@ class WeddingInvites:
 
 
 if __name__ == '__main__':
-    guest_invite = WeddingInvites()
+    guest_invite = InvitesScript()
     guest_invite.run()
