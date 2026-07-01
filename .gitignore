@@ -8,3 +8,4 @@ venv_invites
 *.ttf
 .python-version
 PyWhatKit_DB.txt
+e-cards/
